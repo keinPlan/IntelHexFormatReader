@@ -45,17 +45,17 @@
         /// </summary>
         public MemoryCell[] Cells { get; set; }
 
-        
+
         /// <summary>
         /// Construct a new MemoryBlock.
         /// </summary>
         /// <param name="memorySize">The size of the MemoryBlock to instantiate.</param>
         /// <param name="fillValue">Default cell initialization / fill value.</param>
-        public MemoryBlock(int memorySize, byte fillValue = 0xff)
+        public MemoryBlock(int memorySize, byte fillValue = 0xff, int startAddress = 0)
         {
             Cells = new MemoryCell[memorySize];
             for (var i = 0; i < memorySize; i++)
-                Cells[i] = new MemoryCell(i) { Value = fillValue };
+                Cells[i] = new MemoryCell(startAddress + i) { Value = fillValue };
         }
     }
 }
